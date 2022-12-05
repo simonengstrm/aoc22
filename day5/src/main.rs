@@ -2,8 +2,9 @@ fn main() {
     let input = include_str!("../input.txt");
     let data: Vec<&str> = input.split("\n\n").collect();
     let (stackdata, instructions) = (data[0], data[1]);
+    let stacknums: usize = stackdata.get(stackdata.len()-2..stackdata.len()-1).unwrap().parse().unwrap();
     let stackdata: Vec<Vec<char>> = stackdata.lines().map(|l| l.chars().collect()).collect();
-    let mut stacks: Vec<Vec<char>> = vec![vec![]; 9];
+    let mut stacks: Vec<Vec<char>> = vec![vec![]; stacknums];
     
     let mut counter: usize = 0;
     for col_index in (1..stackdata[0].len()).step_by(4) {
@@ -35,11 +36,19 @@ fn main() {
         stacks[ins[2]-1].append(&mut tomove);
     }
 
+
     stacks.iter().for_each(|s| print!("{}", s[s.len()-1]));
     println!();
-
     
 }
+
+
+    // for ins in instructions.iter() {
+    //     for i in 0..ins[0] {
+    //         stacks[ins[2]-1].push(stacks[ins[1]-1].pop().unwrap())
+    //     }
+    // }
+
 
     // let stackdata: Vec<Vec<char>> = stackdata
     //     .lines()
