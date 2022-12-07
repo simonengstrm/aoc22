@@ -1,0 +1,16 @@
+$ cd /
+$ ls
+1 file1
+dir a
+dir b
+$ cd a
+1 file2
+dir b
+$ cd ..
+$ cd b
+1 file3
+$ cd ..
+$ cd ..
+$ cd b
+$ ls
+1 file4
